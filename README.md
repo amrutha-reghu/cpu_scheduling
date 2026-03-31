@@ -9,7 +9,7 @@ algorithm may favour one class of processes over another. The scheduling criteri
 of completion.
  Response time: The time from submission of a request until the first response is produced.
 The different scheduling algorithms are:
-                          FCFS
-                          SJF
-                          Priority Scheduling
-                          Round Robin
+                          FCFS,
+                          SJF,
+                          Priority Scheduling,
+                          Round Robin.
