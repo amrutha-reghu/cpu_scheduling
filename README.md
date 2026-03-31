@@ -1,67 +1,15 @@
-# fcfs-scheduling
-Implementation of the First Come First Serve (FCFS) CPU scheduling algorithm.
-#include<stdio.h>
-void main()
-{
-int i,j,b[20],g[20],p[20],w[20],t[20],a[20],n;
-float avgw=0,avgt=0;
 
-printf("Enter the number of process : ");
-scanf("%d",&n);
-
-for(i=0;i<n;i++)
-{
-printf("Process ID : ");
-scanf("%d",&p[i]);
-printf("Burst Time : ");
-scanf("%d",&b[i]);
-printf("Arrival Time: ");
-scanf("%d",&a[i]);
-}
-
-// Sorting based on arrival time
-int temp;
-for(i=0;i<n-1;i++)
-{
-for(j=0;j<n-1;j++)
-{
-if(a[j]>a[j+1])
-{
-temp=a[j]; a[j]=a[j+1]; a[j+1]=temp;
-temp=b[j]; b[j]=b[j+1]; b[j+1]=temp;
-temp=p[j]; p[j]=p[j+1]; p[j+1]=temp;
-}
-}
-}
-
-// Gantt chart calculation
-g[0]=a[0];
-for(i=0;i<n;i++)
-{
-if(g[i] < a[i])
-    g[i] = a[i];
-g[i+1]=g[i]+b[i];
-}
-
-// Time calculations
-for(i=0;i<n;i++)
-{
-t[i]=g[i+1]-a[i];
-w[i]=t[i]-b[i];
-avgw+=w[i];
-avgt+=t[i];
-}
-
-avgw/=n;
-avgt/=n;
-
-// Output
-printf("pid\tarrivalT\tBurstT\tCompletionT\tWaiting\tTurnaround\n");
-for(i=0;i<n;i++)
-{
-printf("%d\t%d\t%d\t%d\t\t%d\t%d\n",p[i],a[i],b[i],g[i+1],w[i],t[i]);
-}
-
-printf("\nAverage waiting time %f",avgw);
-printf("\nAverage turnaround time %f",avgt);
-}
+CPU Scheduler can select processes from ready queue based on various scheduling
+algorithms. Different scheduling algorithms have different properties, and the choice of a particular
+algorithm may favour one class of processes over another. The scheduling criteria include
+ CPU utilization:
+ Throughput: The number of processes that are completed per unit time.
+ Waiting time: The sum of periods spent waiting in ready queue.
+ Turnaround time: The interval between the time of submission of process to the time 
+of completion.
+ Response time: The time from submission of a request until the first response is produced.
+The different scheduling algorithms are:
+                          FCFS
+                          SJF
+                          Priority Scheduling
+                          Round Robin
